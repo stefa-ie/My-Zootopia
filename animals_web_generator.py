@@ -7,18 +7,29 @@ def load_data(file_path):
 
 animals_data = load_data('animals_data.json')
 
+'''<li class="cards__item">
+  <div class="card__title">Wire Fox Terrier</div>
+  <p class="card__text">
+      <strong>Diet:</strong> Carnivore<br/>
+      <strong>Location:</strong> North-America and Canada<br/>
+      <strong>Type:</strong> mamal<br/>
+  </p>
+</li>'''
+
 output = ""
 for animal in animals_data:
-    output += '<li class="cards__item">'
+    output += '<li class="cards__item">\n'
     if 'name' in animal:
-        output += f"Name: {animal['name']}<br/>\n"
+        output += f"<div class='card__title'>{animal['name']}</div><br/>\n"
+    output += "<p class='card__text'>\n"
     if 'characteristics' in animal and 'diet' in animal['characteristics']:
-        output += f"Diet: {animal['characteristics']['diet']}<br/>\n"
+        output += f"<strong>Diet:</strong> {animal['characteristics']['diet']}<br/>\n"
     if 'locations' in animal and animal['locations']:
-        output += f"Location: {animal['locations'][0]}<br/>\n"
+        output += f"<strong>Location:</strong> {animal['locations'][0]}<br/>\n"
     if 'characteristics' in animal and 'type' in animal['characteristics']:
-        output += f"Type: {animal['characteristics']['type']}<br/>\n"
-    output += '</li>'
+        output += f"<strong>Type:</strong> {animal['characteristics']['type']}<br/>\n"
+    output += '</p>\n'
+    output += '</li>\n'
 
 print(output)
 
